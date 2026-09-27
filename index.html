@@ -3,104 +3,270 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Page</title>
+  <title>鈴木のぶこ｜江東区政へのおもい</title>
+  <meta name="description" content="鈴木伸子（すずき のぶこ）の公式サイト。江東区での活動と区政へのおもいをお伝えします。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f7f5;
-      --card: #ffffff;
-      --text: #1f2328;
-      --muted: #6b7280;
-      --accent: #f38020;
-      --border: #e5e7eb;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111418;
-        --card: #1b1f24;
-        --text: #e6e8eb;
-        --muted: #9aa3ad;
-        --border: #2d333b;
-      }
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --text: #22302b;
+      --muted: #5f6b66;
+      --accent: #0f7a6c;      /* 運河の緑青 */
+      --accent-soft: #e3f1ee;
+      --warm: #e8833a;        /* 下町の夕焼け */
+      --border: #e4e2dc;
+      --radius: 16px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      font-family: "Noto Sans JP", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.85;
+      font-size: 16px;
     }
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 16px;
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+    /* ヘッダー */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251,250,247,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
-    h1 {
-      font-size: 2rem;
-      margin: 0 0 8px;
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: "Zen Maru Gothic", sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    nav a { color: var(--text); text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+    @media (max-width: 640px) { nav ul { display: none; } }
+
+    /* ヒーロー */
+    .hero { padding: 56px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; } }
+    .tag {
+      display: inline-block; background: var(--accent-soft); color: var(--accent);
+      font-weight: 700; font-size: .85rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
     }
-    .lead { color: var(--muted); margin: 0 0 32px; }
+    .hero h1 {
+      font-family: "Zen Maru Gothic", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.35; margin: 0 0 8px;
+    }
+    .hero .kana { color: var(--muted); letter-spacing: .2em; margin: 0 0 24px; }
+    .catch {
+      font-family: "Zen Maru Gothic", sans-serif;
+      font-size: clamp(1.3rem, 3.4vw, 1.7rem); line-height: 1.6; margin: 0 0 28px;
+      border-left: 5px solid var(--warm); padding-left: 16px;
+    }
+    .btn {
+      display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+      padding: 12px 26px; border-radius: 999px; font-weight: 700;
+    }
+    .btn.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); margin-left: 8px; }
+    .photo {
+      aspect-ratio: 4 / 5; border-radius: 24px; background:
+        linear-gradient(160deg, var(--accent-soft), #f6e3d4);
+      display: grid; place-items: center; color: var(--muted); font-size: .9rem; text-align: center;
+      border: 2px dashed #c9d8d4;
+    }
+
+    /* セクション共通 */
+    section.block { padding: 64px 0; }
+    section.alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sec-title {
+      font-family: "Zen Maru Gothic", sans-serif; font-size: 1.7rem; margin: 0 0 8px;
+    }
+    .sec-lead { color: var(--muted); margin: 0 0 32px; }
+
+    /* おもい */
+    .message { max-width: 720px; font-size: 1.05rem; }
+
+    /* 政策 */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 16px;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
     }
-    .card h2 { font-size: 1.1rem; margin: 0 0 8px; }
-    .card p { margin: 0; }
-    code {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1px 6px;
-      font-size: 0.9em;
+    section.block:not(.alt) .card { background: var(--surface); }
+    .num {
+      display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 700; margin-bottom: 12px;
     }
-    button {
-      background: var(--accent);
-      color: #fff;
-      border: 0;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 1rem;
-      cursor: pointer;
+    .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    /* プロフィール */
+    .profile { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+    @media (max-width: 760px) { .profile { grid-template-columns: 1fr; } }
+    dl.facts { margin: 0; display: grid; grid-template-columns: 7em 1fr; gap: 10px 16px; }
+    dl.facts dt { color: var(--muted); font-weight: 500; }
+    dl.facts dd { margin: 0; }
+    ol.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--accent-soft); }
+    ol.timeline li { position: relative; padding: 0 0 18px 22px; }
+    ol.timeline li::before {
+      content: ""; position: absolute; left: -7px; top: 9px; width: 12px; height: 12px;
+      border-radius: 50%; background: var(--accent);
     }
-    #count { font-weight: bold; margin-left: 12px; }
-    footer { color: var(--muted); font-size: 0.85rem; margin-top: 40px; }
+    ol.timeline time { font-weight: 700; margin-right: 8px; }
+
+    /* 活動報告 */
+    .news li { padding: 14px 0; border-bottom: 1px solid var(--border); list-style: none; }
+    .news { margin: 0; padding: 0; }
+    .news time { color: var(--muted); font-size: .9rem; margin-right: 16px; }
+
+    /* 連絡先 */
+    .contact { text-align: center; }
+    .contact .box {
+      display: inline-block; text-align: left; background: var(--accent-soft);
+      border-radius: var(--radius); padding: 28px 32px; margin-top: 8px;
+    }
+
+    footer { padding: 32px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+
+    /* 未記入の目印（公開前に消す） */
+    .todo { background: #fff4c2; color: #6b5500; border-radius: 4px; padding: 0 4px; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>My Page</h1>
-    <p class="lead">GitHub で管理し、Cloudflare Pages で公開しているサンプルページです。</p>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top">鈴木<span>のぶこ</span></a>
+      <nav>
+        <ul>
+          <li><a href="#message">おもい</a></li>
+          <li><a href="#policy">取り組み</a></li>
+          <li><a href="#profile">プロフィール</a></li>
+          <li><a href="#news">活動報告</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <section class="card">
-      <h2>仕組み</h2>
-      <p><code>main</code> ブランチに push すると、Cloudflare Pages が自動でデプロイします。</p>
+  <main id="top">
+    <!-- ヒーロー -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="tag">江東区</span>
+          <h1>鈴木 伸子</h1>
+          <p class="kana">すずき のぶこ</p>
+          <p class="catch"><span class="todo">【キャッチコピー：例「暮らしの声を、区政のまんなかへ。」】</span></p>
+          <a class="btn" href="#policy">取り組みを見る</a>
+          <a class="btn ghost" href="#contact">お問い合わせ</a>
+        </div>
+        <div class="photo">
+          <!-- 写真ができたら下の1行に置き換えてください -->
+          <!-- <img src="photo.jpg" alt="鈴木伸子" style="border-radius:24px;object-fit:cover;width:100%;height:100%"> -->
+          写真を入れる場所<br>（縦長 4:5 推奨）
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>JavaScript の動作確認</h2>
-      <p style="margin-bottom:12px">ボタンを押すとカウントが増えます。</p>
-      <button id="btn">クリック</button><span id="count">0</span>
+    <!-- おもい -->
+    <section class="block alt" id="message">
+      <div class="wrap">
+        <h2 class="sec-title">江東区へのおもい</h2>
+        <p class="sec-lead">Message</p>
+        <div class="message">
+          <p><span class="todo">【ご本人のことばで、江東区との関わりや区政に取り組む理由を 3〜5 段落ほど】</span></p>
+          <p><span class="todo">【例：江東区で暮らしてきた年数、子育てや仕事・地域活動での経験、そこで感じた課題など】</span></p>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>最終更新</h2>
-      <p id="updated"></p>
+    <!-- 取り組み -->
+    <section class="block" id="policy">
+      <div class="wrap">
+        <h2 class="sec-title">取り組みたいこと</h2>
+        <p class="sec-lead">Policy</p>
+        <div class="cards">
+          <article class="card">
+            <span class="num">1</span>
+            <h3><span class="todo">【政策テーマ1】</span></h3>
+            <p><span class="todo">【具体的な内容を2〜3行で】</span></p>
+          </article>
+          <article class="card">
+            <span class="num">2</span>
+            <h3><span class="todo">【政策テーマ2】</span></h3>
+            <p><span class="todo">【具体的な内容を2〜3行で】</span></p>
+          </article>
+          <article class="card">
+            <span class="num">3</span>
+            <h3><span class="todo">【政策テーマ3】</span></h3>
+            <p><span class="todo">【具体的な内容を2〜3行で】</span></p>
+          </article>
+          <article class="card">
+            <span class="num">4</span>
+            <h3><span class="todo">【政策テーマ4】</span></h3>
+            <p><span class="todo">【具体的な内容を2〜3行で】</span></p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <footer>&copy; <span id="year"></span> my-page</footer>
+    <!-- プロフィール -->
+    <section class="block alt" id="profile">
+      <div class="wrap">
+        <h2 class="sec-title">プロフィール</h2>
+        <p class="sec-lead">Profile</p>
+        <div class="profile">
+          <dl class="facts">
+            <dt>氏名</dt><dd>鈴木 伸子（すずき のぶこ）</dd>
+            <dt>生年</dt><dd><span class="todo">【19XX年 / 出身地】</span></dd>
+            <dt>在住</dt><dd><span class="todo">【江東区○○ 在住○年】</span></dd>
+            <dt>所属</dt><dd><span class="todo">【政党・会派／無所属】</span></dd>
+            <dt>家族</dt><dd><span class="todo">【任意】</span></dd>
+            <dt>趣味</dt><dd><span class="todo">【任意】</span></dd>
+          </dl>
+          <ol class="timeline">
+            <li><time>【年】</time><span class="todo">【学歴】</span></li>
+            <li><time>【年】</time><span class="todo">【職歴】</span></li>
+            <li><time>【年】</time><span class="todo">【地域活動・PTA・町会など】</span></li>
+            <li><time>【年】</time><span class="todo">【現在の活動】</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活動報告 -->
+    <section class="block" id="news">
+      <div class="wrap">
+        <h2 class="sec-title">活動報告</h2>
+        <p class="sec-lead">News</p>
+        <ul class="news">
+          <li><time>2026.XX.XX</time><span class="todo">【街頭活動・区民の方との意見交換会など】</span></li>
+          <li><time>2026.XX.XX</time><span class="todo">【活動内容】</span></li>
+          <li><time>2026.XX.XX</time><span class="todo">【活動内容】</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="block alt contact" id="contact">
+      <div class="wrap">
+        <h2 class="sec-title">お問い合わせ</h2>
+        <p class="sec-lead">ご意見・ご相談をお寄せください</p>
+        <div class="box">
+          <p style="margin:0">メール：<span class="todo">【メールアドレス】</span></p>
+          <p style="margin:0">事務所：<span class="todo">【住所・電話番号（任意）】</span></p>
+          <p style="margin:0">SNS：<span class="todo">【X / Instagram / Facebook など】</span></p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script>
-    let n = 0;
-    document.getElementById('btn').addEventListener('click', () => {
-      document.getElementById('count').textContent = ++n;
-    });
-    document.getElementById('updated').textContent =
-      new Date(document.lastModified).toLocaleString('ja-JP');
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <div class="wrap">&copy; <span id="y"></span> 鈴木伸子</div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
