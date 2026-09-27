@@ -37,22 +37,14 @@
     .en { font-family: "Quicksand", sans-serif; font-weight: 700; letter-spacing: .18em; }
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
 
-    /* ===== 青海波パターン ===== */
-    .seigaiha {
-      --c1: var(--white);   /* 地 */
-      --c2: var(--aqua);    /* 波線 */
-      background-color: var(--c1);
-      background-image:
-        radial-gradient(circle at 100% 150%, var(--c1) 24%, var(--c2) 24%, var(--c2) 28%, var(--c1) 28%, var(--c1) 36%, var(--c2) 36%, var(--c2) 40%, transparent 40%, transparent),
-        radial-gradient(circle at 0 150%,   var(--c1) 24%, var(--c2) 24%, var(--c2) 28%, var(--c1) 28%, var(--c1) 36%, var(--c2) 36%, var(--c2) 40%, transparent 40%, transparent),
-        radial-gradient(circle at 50% 100%, var(--c2) 10%, var(--c1) 10%, var(--c1) 23%, var(--c2) 23%, var(--c2) 30%, var(--c1) 30%, var(--c1) 43%, var(--c2) 43%, var(--c2) 50%, var(--c1) 50%, var(--c1) 63%, var(--c2) 63%, var(--c2) 71%, transparent 71%, transparent),
-        radial-gradient(circle at 100% 50%, var(--c2) 5%, var(--c1) 5%, var(--c1) 15%, var(--c2) 15%, var(--c2) 20%, var(--c1) 20%, var(--c1) 29%, var(--c2) 29%, var(--c2) 34%, var(--c1) 34%, var(--c1) 44%, var(--c2) 44%, var(--c2) 49%, transparent 49%, transparent),
-        radial-gradient(circle at 0 50%,   var(--c2) 5%, var(--c1) 5%, var(--c1) 15%, var(--c2) 15%, var(--c2) 20%, var(--c1) 20%, var(--c1) 29%, var(--c2) 29%, var(--c2) 34%, var(--c1) 34%, var(--c1) 44%, var(--c2) 44%, var(--c2) 49%, transparent 49%, transparent);
-      background-size: 80px 40px;
-    }
-    /* 帯状の青海波（区切り） */
-    .sg-band { height: 56px; }
-    .sg-band.pink { --c1: var(--white); --c2: #f9c6d6; }
+    /* ===== 青海波（SVGタイル） ===== */
+    .seigaiha { background-repeat: repeat; background-size: 80px 40px; }
+    .seigaiha.sg-blue { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2240%22%20viewBox%3D%220%200%2080%2040%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22%233d93e0%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%233d93e0%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3C/svg%3E"); }
+    .seigaiha.sg-sky { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2240%22%20viewBox%3D%220%200%2080%2040%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22%238fd0f5%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%238fd0f5%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23ffffff%22/%3E%3C/svg%3E"); }
+    .seigaiha.sg-white { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2240%22%20viewBox%3D%220%200%2080%2040%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22%23ffffff%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%235bb8f0%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%235bb8f0%22/%3E%3C/svg%3E"); }
+    .seigaiha.sg-pink { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2240%22%20viewBox%3D%220%200%2080%2040%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22%23fde9f0%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%23fde9f0%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%23f07fa3%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%23f07fa3%22/%3E%3C/svg%3E"); }
+    .seigaiha.sg-deep { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2240%22%20viewBox%3D%220%200%2080%2040%22%3E%3Crect%20width%3D%2280%22%20height%3D%2240%22%20fill%3D%22%232b7fd4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22-20.0%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2220.0%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2239%22%20fill%3D%22%232b7fd4%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2231%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2223%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22none%22%20stroke%3D%22%239fdcf7%22%20stroke-width%3D%222.4%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%226%22%20fill%3D%22%239fdcf7%22/%3E%3C/svg%3E"); }
+    .sg-band { height: 60px; }
 
     /* ===== ヘッダー ===== */
     header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .3s, box-shadow .3s; }
@@ -76,13 +68,9 @@
     .hero {
       position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;
       background: linear-gradient(150deg, #8fd0f5 0%, #5bb8f0 40%, #3d93e0 100%);
-      color: var(--white); padding: 120px 0 150px;
+      color: var(--white); padding: 120px 0 190px;
     }
-    .hero .sg-layer {
-      position: absolute; inset: 0; --c1: transparent; --c2: rgba(255,255,255,.22);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
-              mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
-    }
+    .hero-band { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
     .hero .glow { position: absolute; border-radius: 50%; filter: blur(10px); }
     .hero .glow.g1 { width: 420px; height: 420px; right: -120px; top: -120px; background: radial-gradient(circle, rgba(255,255,255,.55), transparent 70%); }
     .hero .glow.g2 { width: 360px; height: 360px; left: -100px; bottom: 40px; background: radial-gradient(circle, rgba(253,233,240,.55), transparent 70%); }
@@ -118,14 +106,9 @@
     .btn.soft { background: var(--pink); color: var(--white); box-shadow: 0 10px 26px rgba(226,88,127,.35); }
 
     .photo-frame { position: relative; justify-self: center; width: min(370px, 88%); }
-    .photo-frame .ring {
-      position: absolute; inset: -22px; border-radius: 50% 50% 46% 54% / 55% 45% 55% 45%;
-      background: rgba(255,255,255,.35); animation: blob 12s ease-in-out infinite;
-    }
-    .photo-frame .ring.r2 { inset: -8px; background: rgba(253,233,240,.6); animation-duration: 9s; animation-direction: reverse; }
-    @keyframes blob {
-      0%,100% { border-radius: 50% 50% 46% 54% / 55% 45% 55% 45%; }
-      50%     { border-radius: 42% 58% 55% 45% / 45% 55% 45% 55%; }
+    .photo-frame .disc {
+      position: absolute; width: 140%; aspect-ratio: 1; left: -20%; top: 50%; transform: translateY(-50%);
+      border-radius: 50%; border: 6px solid var(--white); box-shadow: 0 20px 40px rgba(31,99,176,.25);
     }
     .photo {
       position: relative; aspect-ratio: 4/5; border-radius: 180px 180px 32px 32px; overflow: hidden;
@@ -172,7 +155,7 @@
       position: sticky; top: 100px; border-radius: 32px; padding: 40px 34px 120px; overflow: hidden;
       background: linear-gradient(150deg, var(--ice), var(--pink-soft));
     }
-    .quote-box .seigaiha { position: absolute; inset: auto 0 0 0; height: 90px; --c1: transparent; --c2: rgba(91,184,240,.35); }
+    .quote-box .seigaiha { position: absolute; inset: auto 0 0 0; height: 80px; }
     .quote {
       position: relative; margin: 0; font-family: "Zen Maru Gothic", sans-serif;
       font-size: clamp(1.45rem, 3vw, 2rem); font-weight: 900; line-height: 1.6; color: var(--blue-deep);
@@ -183,7 +166,7 @@
 
     /* ===== 取り組み ===== */
     .policy { overflow: hidden; }
-    .policy .bg { position: absolute; inset: 0; --c1: #ffffff; --c2: #e6f4fd; z-index: -1; }
+    .policy { background: var(--ice); }
     .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
     .card {
@@ -209,7 +192,8 @@
       background: var(--white); border-radius: 30px; padding: 30px; box-shadow: 0 12px 30px rgba(226,88,127,.1);
       position: relative; overflow: hidden;
     }
-    .action-item .seigaiha { position: absolute; right: -10px; bottom: -10px; width: 140px; height: 80px; --c1: transparent; --c2: #fbd3e0; border-radius: 50% 0 0 0; opacity: .8; }
+    .action-item { padding-bottom: 76px; }
+    .action-item .seigaiha { position: absolute; left: 0; right: 0; bottom: 0; height: 48px; }
     .action-item .tag { display: inline-block; background: var(--pink); color: var(--white); font-size: .8rem; font-weight: 700; padding: 3px 14px; border-radius: 999px; margin-bottom: 12px; }
     .action-item:nth-child(2) .tag { background: var(--sky); }
     .action-item h3 { position: relative; margin: 0 0 8px; font-size: 1.22rem; font-weight: 900; color: var(--blue-deep); }
@@ -223,7 +207,7 @@
       background: linear-gradient(160deg, #6cc2f2, var(--blue)); color: var(--white);
       box-shadow: 0 20px 44px rgba(43,127,212,.25);
     }
-    .profile-card .seigaiha { position: absolute; inset: auto 0 0 0; height: 90px; --c1: transparent; --c2: rgba(255,255,255,.3); }
+    .profile-card .seigaiha { position: absolute; inset: auto 0 0 0; height: 80px; }
     .profile-card .nm { font-family: "Zen Maru Gothic", sans-serif; font-size: 2.2rem; font-weight: 900; line-height: 1.2; letter-spacing: .06em; }
     .profile-card .kn { opacity: .9; letter-spacing: .25em; margin-bottom: 20px; }
     .profile-card dl { position: relative; display: grid; grid-template-columns: 4.5em 1fr; gap: 10px 12px; margin: 0; }
@@ -241,7 +225,6 @@
 
     /* ===== お問い合わせ ===== */
     .contact { overflow: hidden; text-align: center; color: var(--white); background: linear-gradient(150deg, #7cc8f3, var(--blue)); }
-    .contact .sg-layer { position: absolute; inset: 0; --c1: transparent; --c2: rgba(255,255,255,.12); }
     .contact .sec-head h2 { color: var(--white); }
     .contact .sec-head .en { color: var(--pink-soft); }
     .contact .sec-head h2::after { background: radial-gradient(circle at 50% 100%, transparent 38%, #fff 38%, #fff 48%, transparent 48%, transparent 62%, #fff 62%, #fff 72%, transparent 72%) 0 0 / 28px 22px repeat-x; }
@@ -265,7 +248,6 @@
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .photo-frame .ring { animation: none; }
     }
   </style>
 </head>
@@ -287,7 +269,6 @@
   <main id="top">
     <!-- ===== ヒーロー ===== -->
     <section class="hero">
-      <div class="sg-layer seigaiha" aria-hidden="true"></div>
       <div class="glow g1" aria-hidden="true"></div>
       <div class="glow g2" aria-hidden="true"></div>
       <div class="wrap hero-grid">
@@ -307,8 +288,7 @@
           </div>
         </div>
         <div class="photo-frame">
-          <div class="ring" aria-hidden="true"></div>
-          <div class="ring r2" aria-hidden="true"></div>
+          <div class="disc seigaiha sg-sky" aria-hidden="true"></div>
           <div class="photo">
             <!-- 写真ができたら photo 内を <img src="photo.jpg" alt="鈴木のぶこ" style="width:100%;height:100%;object-fit:cover"> に置き換え -->
             <svg viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="46" r="30" fill="#2b7fd4"/><path d="M8 150c0-32 23-50 52-50s52 18 52 50z" fill="#2b7fd4"/></svg>
@@ -316,12 +296,7 @@
           </div>
         </div>
       </div>
-      <div class="wave" aria-hidden="true">
-        <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
-          <path d="M0,60 C240,110 480,10 720,50 C960,90 1200,20 1440,60 L1440,110 L0,110 Z" fill="rgba(255,255,255,.35)"/>
-          <path d="M0,80 C300,40 520,110 780,75 C1040,40 1240,100 1440,70 L1440,110 L0,110 Z" fill="#ffffff"/>
-        </svg>
-      </div>
+      <div class="hero-band seigaiha sg-blue" aria-hidden="true"></div>
     </section>
 
     <!-- ===== 数字 ===== -->
@@ -333,7 +308,7 @@
       </div>
     </div>
 
-    <div class="sg-band seigaiha" style="margin-top:80px" aria-hidden="true"></div>
+    <div class="sg-band seigaiha sg-white" style="margin-top:80px" aria-hidden="true"></div>
 
     <!-- ===== 想い ===== -->
     <section class="sec message-sec" id="message">
@@ -342,7 +317,7 @@
         <div class="message-grid">
           <div class="quote-box reveal">
             <p class="quote">まず、事実を確かめる。<br>そこから、<br>区政を変えていきます。</p>
-            <div class="seigaiha" aria-hidden="true"></div>
+            <div class="seigaiha sg-white" aria-hidden="true"></div>
           </div>
           <div class="message reveal">
             <p>私は江東区で生まれ、江東区で育ちました。この街の景色も、ここで暮らす人たちの毎日も、ずっとすぐそばで見てきました。</p>
@@ -354,11 +329,10 @@
       </div>
     </section>
 
-    <div class="sg-band pink seigaiha" aria-hidden="true"></div>
+    <div class="sg-band seigaiha sg-pink" aria-hidden="true"></div>
 
     <!-- ===== 取り組み ===== -->
     <section class="sec policy" id="policy">
-      <div class="bg seigaiha" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sec-head reveal"><span class="en">POLICY</span><h2>取り組みたいこと</h2></div>
         <div class="cards">
@@ -395,19 +369,19 @@
             <span class="tag">情報公開</span>
             <h3>区へ情報公開請求を実施</h3>
             <p>外国人住民の国民健康保険料の納付状況について、区に情報公開請求を行いました。</p>
-            <div class="seigaiha" aria-hidden="true"></div>
+            <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
           <div class="action-item reveal">
             <span class="tag">まちづくり</span>
             <h3>データセンター建設の課題に取り組む</h3>
             <p>地域の暮らしに直結する開発について、住民の立場から課題を確かめています。</p>
-            <div class="seigaiha" aria-hidden="true"></div>
+            <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
           <div class="action-item reveal">
             <span class="tag">活動報告</span>
             <h3><span class="todo">【最新の活動】</span></h3>
             <p><span class="todo">【街頭活動・意見交換会など】</span></p>
-            <div class="seigaiha" aria-hidden="true"></div>
+            <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
         </div>
       </div>
@@ -427,7 +401,7 @@
               <dt>所属</dt><dd>日本保守党 東京都江東区 政策委員</dd>
               <dt>信条</dt><dd>課題は机上ではなく現場にある</dd>
             </dl>
-            <div class="seigaiha" aria-hidden="true"></div>
+            <div class="seigaiha sg-deep" aria-hidden="true"></div>
           </div>
           <ol class="timeline reveal">
             <li><span class="when">江東区に生まれる</span>江東区で生まれ、江東区で育つ</li>
@@ -439,9 +413,9 @@
       </div>
     </section>
 
+    <div class="sg-band seigaiha sg-blue" aria-hidden="true"></div>
     <!-- ===== お問い合わせ ===== -->
     <section class="sec contact" id="contact">
-      <div class="sg-layer seigaiha" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sec-head reveal" style="position:relative"><span class="en">CONTACT</span><h2>あなたの声を聞かせてください</h2></div>
         <p class="contact-lead reveal">江東区での暮らしの中で感じていること、ぜひお寄せください。</p>
@@ -455,7 +429,7 @@
   </main>
 
   <footer>
-    <div class="sg-band seigaiha" aria-hidden="true"></div>
+    <div class="sg-band seigaiha sg-blue" aria-hidden="true"></div>
     &copy; <span id="y"></span> 鈴木のぶこ
   </footer>
 
