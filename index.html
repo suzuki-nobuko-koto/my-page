@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Page</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1f2328;
+      --muted: #6b7280;
+      --accent: #f38020;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111418;
+        --card: #1b1f24;
+        --text: #e6e8eb;
+        --muted: #9aa3ad;
+        --border: #2d333b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 8px;
+    }
+    .lead { color: var(--muted); margin: 0 0 32px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .card h2 { font-size: 1.1rem; margin: 0 0 8px; }
+    .card p { margin: 0; }
+    code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.9em;
+    }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #count { font-weight: bold; margin-left: 12px; }
+    footer { color: var(--muted); font-size: 0.85rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>My Page</h1>
+    <p class="lead">GitHub で管理し、Cloudflare Pages で公開しているサンプルページです。</p>
+
+    <section class="card">
+      <h2>仕組み</h2>
+      <p><code>main</code> ブランチに push すると、Cloudflare Pages が自動でデプロイします。</p>
+    </section>
+
+    <section class="card">
+      <h2>JavaScript の動作確認</h2>
+      <p style="margin-bottom:12px">ボタンを押すとカウントが増えます。</p>
+      <button id="btn">クリック</button><span id="count">0</span>
+    </section>
+
+    <section class="card">
+      <h2>最終更新</h2>
+      <p id="updated"></p>
+    </section>
+
+    <footer>&copy; <span id="year"></span> my-page</footer>
+  </main>
+
+  <script>
+    let n = 0;
+    document.getElementById('btn').addEventListener('click', () => {
+      document.getElementById('count').textContent = ++n;
+    });
+    document.getElementById('updated').textContent =
+      new Date(document.lastModified).toLocaleString('ja-JP');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
