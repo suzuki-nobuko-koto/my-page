@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>鈴木のぶこ｜江東区から、事実を確かめる政治を。</title>
-  <meta name="description" content="鈴木伸子（すずき のぶこ）公式サイト。江東区生まれ江東区育ち。現場の声を聞き、事実を確かめることから始めます。">
+  <meta name="description" content="日本保守党 東京都江東区 政策委員 鈴木伸子（すずき のぶこ）公式サイト。江東区生まれ江東区育ち。現場の声を聞き、事実を確かめることから始めます。">
+  <meta property="og:title" content="鈴木のぶこ｜日本保守党 東京都江東区 政策委員">
+  <meta property="og:description" content="江東区から、日本を豊かに、強く。現場の声を聞き、事実を確かめる政治を。">
+  <meta property="og:image" content="img/activity-street.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
@@ -62,7 +66,7 @@
     nav a:hover { background: rgba(255,255,255,.25); }
     nav a.cta, header.scrolled nav a.cta { background: var(--pink); color: var(--white); box-shadow: 0 4px 14px rgba(240,127,163,.4); }
     nav a.cta:hover { background: var(--pink-deep); }
-    @media (max-width: 760px) { nav li:not(:last-child) { display: none; } }
+    @media (max-width: 900px) { nav li:not(:last-child) { display: none; } }
 
     /* ===== ヒーロー ===== */
     .hero {
@@ -187,7 +191,8 @@
 
     /* ===== 行動 ===== */
     .action { background: linear-gradient(160deg, var(--ice) 0%, var(--pink-soft) 100%); }
-    .action-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .action-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    @media (max-width: 760px) { .action-list { grid-template-columns: 1fr; } }
     .action-item {
       background: var(--white); border-radius: 30px; padding: 30px; box-shadow: 0 12px 30px rgba(226,88,127,.1);
       position: relative; overflow: hidden;
@@ -240,6 +245,63 @@
     footer { background: var(--white); color: var(--muted); padding: 0 0 26px; text-align: center; font-size: .85rem; }
     footer .sg-band { margin-bottom: 20px; }
 
+    /* ===== ヒーロー追加要素 ===== */
+    .slogan {
+      display: inline-block; margin: 0 0 28px; padding: 10px 22px; border-radius: 16px;
+      background: rgba(31,99,176,.55); font-family: "Zen Maru Gothic", sans-serif; font-weight: 900;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem); letter-spacing: .04em; line-height: 1.5;
+    }
+    .stamp {
+      position: absolute; left: -18px; bottom: 34px; z-index: 3; width: 108px; height: 108px; border-radius: 50%;
+      display: grid; place-items: center; text-align: center; transform: rotate(-12deg);
+      background: #e2364f; color: var(--white); border: 4px solid var(--white);
+      font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: 1.02rem; line-height: 1.3;
+      box-shadow: 0 10px 22px rgba(160,30,60,.35);
+    }
+    .stamp b { display: block; font-size: 1.25rem; }
+
+    /* ===== 区政レポート ===== */
+    .report { background: var(--white); }
+    .report-lead { text-align: center; max-width: 720px; margin: -20px auto 40px; color: var(--muted); }
+    .budget {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 28px;
+      background: var(--ice); border-radius: 28px; padding: 26px 20px; margin-bottom: 32px; text-align: center;
+    }
+    .budget .k { font-weight: 700; color: var(--muted); }
+    .budget .v { font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--blue-deep); }
+    .budget .v small { font-size: 1rem; }
+    .holes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .holes { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .holes { grid-template-columns: 1fr; } }
+    .hole {
+      background: var(--white); border-radius: 26px; padding: 26px 24px; border: 2px solid #e3f1fc;
+      box-shadow: 0 10px 26px rgba(43,127,212,.09);
+    }
+    .hole .hn { font-family: "Quicksand", sans-serif; font-weight: 700; color: var(--pink-deep); font-size: .85rem; letter-spacing: .14em; }
+    .hole .num { font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: 1.85rem; color: var(--blue); line-height: 1.3; margin: 2px 0 6px; }
+    .hole h3 { margin: 0 0 6px; font-size: 1.08rem; font-weight: 900; color: var(--blue-deep); line-height: 1.5; }
+    .hole p { margin: 0; color: var(--muted); font-size: .93rem; line-height: 1.8; }
+    .asks {
+      margin-top: 40px; border-radius: 30px; padding: 34px 30px; color: var(--white);
+      background: linear-gradient(150deg, #5bb8f0, var(--blue-deep));
+    }
+    .asks h3 { margin: 0 0 16px; font-size: 1.35rem; font-weight: 900; }
+    .asks ol { margin: 0; padding-left: 1.4em; }
+    .asks li { margin-bottom: 8px; font-weight: 500; }
+    .asks .closing { margin: 18px 0 0; font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: 1.2rem; }
+    .src { margin-top: 18px; font-size: .8rem; color: var(--muted); line-height: 1.7; }
+
+    /* ===== 活動写真 ===== */
+    .action-photo {
+      margin: 0 0 32px; border-radius: 30px; overflow: hidden; position: relative;
+      box-shadow: 0 18px 40px rgba(43,127,212,.2); border: 6px solid var(--white);
+    }
+    .action-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; object-position: 50% 60%; }
+    .action-photo figcaption {
+      position: absolute; left: 16px; bottom: 16px; background: rgba(255,255,255,.94); color: var(--blue-deep);
+      font-weight: 700; font-size: .9rem; padding: 6px 16px; border-radius: 999px;
+    }
+
     /* ===== 未記入の目印（公開前に消す） ===== */
     .todo { background: #fff3a6; color: #6b5500; border-radius: 6px; padding: 0 6px; font-weight: 700; }
 
@@ -259,6 +321,8 @@
         <ul>
           <li><a href="#message">想い</a></li>
           <li><a href="#policy">取り組み</a></li>
+          <li><a href="#report">区政レポート</a></li>
+          <li><a href="#action">活動</a></li>
           <li><a href="#profile">プロフィール</a></li>
           <li><a class="cta" href="#contact">ご意見を送る</a></li>
         </ul>
@@ -282,6 +346,7 @@
             <span class="name">鈴木のぶこ</span>
             <span class="kana en">SUZUKI NOBUKO</span>
           </div>
+          <p class="slogan">江東区から<br>日本を豊かに、強く。</p>
           <div class="btns">
             <a class="btn primary" href="#message">想いを読む →</a>
             <a class="btn soft" href="#contact">ご意見を送る</a>
@@ -289,6 +354,7 @@
         </div>
         <div class="photo-frame">
           <div class="disc seigaiha sg-sky" aria-hidden="true"></div>
+          <div class="stamp">守ろう！<b>江東区</b>を。</div>
           <div class="photo">
             <!-- 写真ができたら photo 内を <img src="photo.jpg" alt="鈴木のぶこ" style="width:100%;height:100%;object-fit:cover"> に置き換え -->
             <svg viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="46" r="30" fill="#2b7fd4"/><path d="M8 150c0-32 23-50 52-50s52 18 52 50z" fill="#2b7fd4"/></svg>
@@ -339,48 +405,100 @@
           <article class="card reveal">
             <div class="no">01</div>
             <h3>事実にもとづく、ひらかれた区政</h3>
-            <p>情報公開請求などを通じて区の実態を確かめ、区民にわかりやすく伝えます。説明責任を果たす区政を求めます。</p>
+            <p>情報公開請求などを通じて区の実態を確かめ、区民にわかりやすく伝えます。「把握していない」「公表していない」をそのままにせず、説明責任を果たす区政を求めます。</p>
           </article>
           <article class="card reveal">
             <div class="no">02</div>
-            <h3>公平な負担と社会保障</h3>
-            <p>国民健康保険料の納付状況など、区民の負担にかかわる実態を明らかにし、誰もが納得できる公平な制度運営をめざします。</p>
+            <h3>区の財政の「見えない穴」をふさぐ</h3>
+            <p>税制見直しによる減収、ふるさと納税の流出、施設の建て替えラッシュ。今は元気な区の財政も、外からの力に弱い。影響額を数字で示すよう区に求めます。</p>
           </article>
           <article class="card reveal">
             <div class="no">03</div>
-            <h3>暮らしを守るまちづくり</h3>
-            <p>データセンター建設など、住環境に直結する開発について、住民への十分な説明と生活への影響の検証を求めます。</p>
+            <h3>公平な負担と社会保障</h3>
+            <p>国民健康保険料の納付状況や生活保護の受給状況など、区民の負担にかかわる統計の実態把握と公表を求め、誰もが納得できる公平な制度運営をめざします。</p>
           </article>
           <article class="card reveal">
             <div class="no">04</div>
-            <h3>区民の安全・安心を最優先に</h3>
-            <p>現場の声に耳を傾け、普通に暮らす区民が安心して暮らし続けられる江東区をつくります。</p>
+            <h3>暮らしを守るまちづくり</h3>
+            <p>データセンター建設など住環境に直結する開発は、賛成・反対の前にまず十分な説明と安全性の検証を。区民の安全と安心を最優先にした行政運営を求めます。</p>
+          </article>
+          <article class="card reveal">
+            <div class="no">05</div>
+            <h3>災害に強く、人にやさしい避難所</h3>
+            <p>能登半島地震では雑魚寝やプライバシー不足が課題になりました。パーティションや簡易ベッドの備蓄、女性・乳幼児のための空間など、開設初日から使える体制を確かめます。</p>
+          </article>
+          <article class="card reveal">
+            <div class="no">06</div>
+            <h3>普通に暮らす区民のための政治</h3>
+            <p>声の大きい人のためではなく、日々懸命に暮らす区民のために。行政が見落としている課題に光を当て、皆さまの声を区政へ届けます。</p>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ===== 区政レポート ===== -->
+    <section class="sec report" id="report">
+      <div class="wrap">
+        <div class="sec-head reveal"><span class="en">REPORT</span><h2>江東区の財政 ここが「穴」だ</h2></div>
+        <p class="report-lead reveal">今は元気。でも、外からの力に弱い。区の公開資料を読み込み、見えてきた6つの「穴」をやさしくまとめました。</p>
+        <div class="budget reveal">
+          <div><div class="k">令和8年度 一般会計</div><div class="v">2,927<small>億円</small></div></div>
+          <div><div class="k">区民1人あたり</div><div class="v">約54<small>万円</small></div></div>
+        </div>
+        <div class="holes">
+          <article class="hole reveal"><div class="hn">HOLE 1</div><div class="num">748億円</div><h3>都からの仕送りが、国に削られるかも</h3><p>23区の固定資産税が国の見直し対象に。区への交付金の元手そのものなのに、区は影響額の試算を出していません。</p></article>
+          <article class="hole reveal"><div class="hn">HOLE 2</div><div class="num">年62億円</div><h3>ふるさと納税で、お金が出ていく</h3><p>流出額は5年で約1.9倍、区民税の約1割。返礼品で取り戻せているのは年約3億円にとどまります。</p></article>
+          <article class="hole reveal"><div class="hn">HOLE 3</div><div class="num">▲115億円</div><h3>いざという時の貯金が、減り始めた</h3><p>令和8年度は取り崩し272億円に対し積み立て156億円。「増える一方」から「減る方向」に変わりました。</p></article>
+          <article class="hole reveal"><div class="hn">HOLE 4</div><div class="num">30年で6,471億円</div><h3>建て替えラッシュが来る</h3><p>必要額は年平均216億円、過去10年の実績は214億円で余裕ゼロ。ピークは2033〜38年ごろ、地下鉄8号線の開業とも重なります。</p></article>
+          <article class="hole reveal"><div class="hn">HOLE 5</div><div class="num">予算の45%</div><h3>やめられない出費が増え続ける</h3><p>扶助費918億円（前年比＋55億円）、人件費366億円（同＋20億円）。合わせて約1,300億円が義務的な支出です。</p></article>
+          <article class="hole reveal"><div class="hn">HOLE 6</div><div class="num">数字が見えない</div><h3>区が、大事な数字を出していない</h3><p>国保の赤字の穴埋め額、国籍別の国保・生活保護の状況、地下鉄8号線の区の負担額。見えない穴は、ふさげません。</p></article>
+        </div>
+        <div class="asks reveal">
+          <h3>区に聞くべき5つの質問</h3>
+          <ol>
+            <li>国の税制見直しで、都からの交付金はいくら減るのか。試算を示してください。</li>
+            <li>扶助費が55億円増えた中身は何か。事業ごとに示してください。</li>
+            <li>国保の赤字の穴埋めは今いくらか。国籍別の加入者数・納付率もあわせて。</li>
+            <li>工事費の値上がりを反映して、施設更新の費用を計算し直してください。</li>
+            <li>地下鉄8号線の延伸で、区の負担はいくらになるのか。</li>
+          </ol>
+          <p class="closing">まず、数字を出してもらおう。</p>
+        </div>
+        <p class="src reveal">出典：江東区「令和8年度江東区予算（案）概要」「令和7年度上半期の財政状況」「公共施設等総合管理計画（改訂）概要版」、東京都「令和8年度与党税制改正大綱に対する都の見解」、特別区長会「不合理な税制改正に対する特別区の主張」ほか。令和7・8年度末の数値は見込み・予算上の計画値です（2026年10月時点）。</p>
+      </div>
+    </section>
+
     <!-- ===== 行動 ===== -->
-    <section class="sec action">
+    <section class="sec action" id="action">
       <div class="wrap">
         <div class="sec-head reveal"><span class="en">ACTION</span><h2>現場で動いています</h2></div>
+        <figure class="action-photo reveal">
+          <img src="img/activity-street.jpg" alt="江東区内で日本保守党ののぼりを立て、仲間と街頭活動をする様子" width="1400" height="1050">
+          <figcaption>江東区内での街頭活動</figcaption>
+        </figure>
         <div class="action-list">
+          <div class="action-item reveal">
+            <span class="tag">街頭活動</span>
+            <h3>仲間とともに、街頭へ</h3>
+            <p>一人でも多くの方に党の理念と政策を知っていただくため、区内の駅前などで街頭活動を続けています。</p>
+            <div class="seigaiha sg-pink" aria-hidden="true"></div>
+          </div>
           <div class="action-item reveal">
             <span class="tag">情報公開</span>
             <h3>区へ情報公開請求を実施</h3>
-            <p>外国人住民の国民健康保険料の納付状況について、区に情報公開請求を行いました。</p>
+            <p>外国人住民の国民健康保険料の納付状況について区に情報公開請求を行い、区として十分な実態把握がなされていないことを確認しました。</p>
             <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
           <div class="action-item reveal">
             <span class="tag">まちづくり</span>
             <h3>データセンター建設の課題に取り組む</h3>
-            <p>地域の暮らしに直結する開発について、住民の立場から課題を確かめています。</p>
+            <p>住宅地に近い施設の安全性や周辺への影響について、住民の立場から十分な説明と検証を求めています。</p>
             <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
           <div class="action-item reveal">
-            <span class="tag">活動報告</span>
-            <h3><span class="todo">【最新の活動】</span></h3>
-            <p><span class="todo">【街頭活動・意見交換会など】</span></p>
+            <span class="tag">調査</span>
+            <h3>区の公表資料を一つずつ確認</h3>
+            <p>生活保護の国籍別の状況や、避難所ごとのパーティション・簡易ベッドの備蓄数など、区の公表資料に載っていない数字を洗い出し、担当課への照会を進めています。</p>
             <div class="seigaiha sg-pink" aria-hidden="true"></div>
           </div>
         </div>
@@ -407,6 +525,7 @@
             <li><span class="when">江東区に生まれる</span>江東区で生まれ、江東区で育つ</li>
             <li><span class="when"><span class="todo">【年】</span></span><span class="todo">【学歴】</span></li>
             <li><span class="when">民間企業に28年勤務</span>管理職として組織運営・人材育成に従事</li>
+            <li><span class="when">日本保守党の活動に参加</span>党の理念・政策を広める活動に取り組む</li>
             <li><span class="when">現在</span>日本保守党 東京都江東区 政策委員。情報公開請求などを通じて区政の課題に取り組む</li>
           </ol>
         </div>
