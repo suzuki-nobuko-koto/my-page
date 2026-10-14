@@ -1,11 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<defs>
-<linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="64"><stop offset="0" stop-color="#8fd0f5"/><stop offset=".45" stop-color="#5bb8f0"/><stop offset="1" stop-color="#3d93e0"/></linearGradient>
-<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>
-</defs>
+<defs><clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath></defs>
 <g clip-path="url(#c)">
-<rect width="64" height="64" fill="url(#sky)"/>
-<circle cx="19" cy="19" r="8" fill="#e2587f"/>
-<path d="M10 52 Q23 41 28.5 25 Q29.2 23 31.3 23 H36 Q38.2 23 39 25 Q41.5 30.5 46 34.5 Q51 38.8 57 39.5 Q54.5 48 46.5 52 Q30 56 10 52 Z" fill="#fff"/>
-<path d="M53 37 C45.5 36  40.2 39.5 40.2 44.6 C40.2 48.6 44.8 49.4 46.2 46.8 C47.1 45 45.6 43.4 44 44.4" fill="none" stroke="url(#sky)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect width="64" height="64" fill="#2b7fd4"/>
+<circle cx="32" cy="24" r="12" fill="#e2364f"/>
+<path d="M8 50 L27 29 H37 L56 50 Z" fill="#fff"/>
+<path d="M0 46 Q8 40 16 46 T32 46 T48 46 T64 46 V64 H0 Z" fill="#5bb8f0"/>
+<path d="M0 55 Q8 49 16 55 T32 55 T48 55 T64 55 V64 H0 Z" fill="#9fdcf7"/>
 </g></svg>
