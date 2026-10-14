@@ -240,7 +240,9 @@
     .contact .sec-head .en { color: var(--pink-soft); }
     .contact .sec-head h2::after { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='9' viewBox='0 0 54 9'%3E%3Ccircle cx='9' cy='9' r='8.1' fill='%23fff0' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='9' cy='9' r='5.4' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='9' cy='9' r='2.7' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='27' cy='9' r='8.1' fill='%23fff0' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='27' cy='9' r='5.4' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='27' cy='9' r='2.7' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='45' cy='9' r='8.1' fill='%23fff0' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='45' cy='9' r='5.4' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3Ccircle cx='45' cy='9' r='2.7' fill='none' stroke='%23ffffff' stroke-width='1.8'/%3E%3C/svg%3E") center / 54px 9px no-repeat; }
     .contact-lead { position: relative; font-size: 1.12rem; margin: 0 0 36px; }
-    .contact-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; max-width: 820px; margin: 0 auto; }
+    .contact-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 640px; margin: 0 auto; }
+    .contact-grid .addr { display: block; font-size: 1.05rem; overflow-wrap: anywhere; }
+    .contact-grid small { display: block; margin-top: 2px; color: var(--muted); font-weight: 500; font-size: .82rem; }
     .contact-grid a, .contact-grid div {
       display: block; background: var(--white); color: var(--blue-deep); border-radius: 24px; padding: 22px;
       text-decoration: none; font-weight: 700; box-shadow: 0 12px 28px rgba(31,99,176,.25); transition: transform .2s;
@@ -516,7 +518,7 @@
             <div class="nm">鈴木 伸子</div>
             <div class="kn">すずき のぶこ</div>
             <dl>
-              <dt>生年</dt><dd><span class="todo">【19XX年】</span></dd>
+              <dt>生年</dt><dd>1977年生まれ</dd>
               <dt>出身</dt><dd>東京都江東区</dd>
               <dt>所属</dt><dd>日本保守党 東京都江東区 政策委員</dd>
               <dt>信条</dt><dd>課題は机上ではなく現場にある</dd>
@@ -537,12 +539,11 @@
     <!-- ===== お問い合わせ ===== -->
     <section class="sec contact" id="contact">
       <div class="wrap">
-        <div class="sec-head reveal" style="position:relative"><span class="en">CONTACT</span><h2>あなたの声を聞かせてください</h2></div>
+        <div class="sec-head reveal" style="position:relative"><span class="en">CONTACT</span><h2 style="word-break:keep-all">あなたの声を<wbr>聞かせてください</h2></div>
         <p class="contact-lead reveal">江東区での暮らしの中で感じていること、ぜひお寄せください。</p>
         <div class="contact-grid reveal">
-          <a href="#"><span class="ico">✉</span><span class="todo">【メールアドレス】</span></a>
-          <a href="#"><span class="ico">𝕏</span><span class="todo">【Xアカウント】</span></a>
-          <div><span class="ico">✆</span><span class="todo">【電話番号（任意）】</span></div>
+          <a href="mailto:suzuki.nobuko.koto@gmail.com"><span class="ico">✉</span><span class="addr">suzuki.nobuko.koto<wbr>@gmail.com</span><small>メールで送る</small></a>
+          <a href="https://x.com/petit_tama3" target="_blank" rel="noopener"><span class="ico">𝕏</span><span class="addr">@petit_tama3</span><small>X（旧Twitter）で発信中</small></a>
         </div>
       </div>
       <div class="sg-foot" aria-hidden="true"></div>
