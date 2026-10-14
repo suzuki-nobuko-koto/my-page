@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="64"><stop offset="0" stop-color="#4aa6ea"/><stop offset="1" stop-color="#1f63b0"/></linearGradient>
+<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath></defs>
+<g clip-path="url(#c)"><rect width="64" height="64" fill="url(#g)"/>
+<circle cx="32" cy="38" r="20" fill="url(#g)" stroke="#fff" stroke-width="3.4"/><circle cx="32" cy="38" r="13.3333" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="32" cy="38" r="6.66667" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="12" cy="58" r="20" fill="url(#g)" stroke="#fff" stroke-width="3.4"/><circle cx="12" cy="58" r="13.3333" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="12" cy="58" r="6.66667" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="52" cy="58" r="20" fill="url(#g)" stroke="#fff" stroke-width="3.4"/><circle cx="52" cy="58" r="13.3333" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="52" cy="58" r="6.66667" fill="none" stroke="#fff" stroke-width="3.4"/></g></svg>
