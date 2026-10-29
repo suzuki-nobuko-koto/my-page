@@ -66,7 +66,8 @@ jobs:
         if: always()
         run: |
           trap 'echo "::error title=コミットしてプッシュ（失敗時も実行結果を残す）::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
-          git add activity img/activity index.html
+          git add activity index.html
+          if [ -d img/activity ]; then git add img/activity; fi
           if git diff --cached --quiet; then
             echo "変更なし"
           else
