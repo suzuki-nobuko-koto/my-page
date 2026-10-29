@@ -19,7 +19,9 @@ GitHub Actions から週1回実行する想定（.github/workflows/collect-x.yml
 from __future__ import annotations
 
 import datetime as dt
+import html
 import io
+import re
 import json
 import os
 import sys
@@ -98,8 +100,16 @@ def save_photo(data: bytes, dest: Path) -> tuple[int, int]:
     return im.size
 
 
-def clean_text(tweet: dict) -> str:
-    """t.co の短縮URLを元のURLに戻し、写真用のURLは消す。"""
+QUOTE_URL_RE = re.compile(r"\s*https?://(?:twitter|x)\.com/\w+/status/(\d+)\S*\s*$")
+
+
+def clean_text(tweet: dict) -> tuple[str, str]:
+    """本文を整える。戻り値は（本文, 引用元URL）。
+
+    - t.co の短縮URLを元のURLに戻し、写真・動画用のURLは消す
+    - API が返す &amp; などを元の記号に戻す
+    - 引用ポストの場合、末尾に付く引用元URLは本文から外して別に返す
+    """
     text = (tweet.get("note_tweet") or {}).get("text") or tweet.get("text", "")
     ents = (tweet.get("note_tweet") or {}).get("entities") or tweet.get("entities") or {}
     for u in ents.get("urls", []):
@@ -110,7 +120,14 @@ def clean_text(tweet: dict) -> str:
             text = text.replace(short, "")
         else:
             text = text.replace(short, u.get("expanded_url", short))
-    return text.strip()
+    text = html.unescape(text).strip()
+    quoted = ""
+    quoted_ids = {r["id"] for r in tweet.get("referenced_tweets", []) if r.get("type") == "quoted"}
+    m = QUOTE_URL_RE.search(text)
+    if m and (not quoted_ids or m.group(1) in quoted_ids):
+        quoted = re.sub(r"^https?://twitter\.com", "https://x.com", m.group(0).strip())
+        text = text[:m.start()].rstrip()
+    return text, quoted
 
 
 def load_state() -> dict:
@@ -188,12 +205,14 @@ def main() -> int:
                 except Exception as e:  # 写真1枚の失敗で全体を止めない
                     log(f"  写真の取得に失敗 {tid}-{i}: {e}")
             kinds = {r["type"] for r in t.get("referenced_tweets", [])}
+            text, quoted_url = clean_text(t)
             save_json(post_file, {
                 "id": tid,
                 "url": f"https://x.com/{USERNAME}/status/{tid}",
                 "created_at": created.isoformat(timespec="seconds"),
                 "kind": "quote" if "quoted" in kinds else "post",
-                "text": clean_text(t),
+                "text": text,
+                "quoted_url": quoted_url,
                 "photos": photos,
                 "videos": videos,
                 "status": "pending",
