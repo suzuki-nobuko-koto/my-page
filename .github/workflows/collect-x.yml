@@ -34,6 +34,7 @@ jobs:
 
       - name: activity-draft ブランチを用意
         run: |
+          trap 'echo "::error title=activity-draft ブランチを用意::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git ls-remote --exit-code --heads origin activity-draft >/dev/null; then
@@ -54,22 +55,24 @@ jobs:
         id: fetch
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-        run: python scripts/fetch_x.py
+        run: |
+          python scripts/fetch_x.py || { echo "::error title=X から投稿を取得::$(python -c "import json;print(json.load(open('activity/last-run.json')).get('error'))" 2>/dev/null)"; exit 1; }
 
       - name: 活動報告ページを生成
         if: always()
-        run: python scripts/build_activity.py
+        run: python scripts/build_activity.py || { echo "::error title=ページ生成::build_activity.py が失敗"; exit 1; }
 
       - name: コミットしてプッシュ（失敗時も実行結果を残す）
         if: always()
         run: |
+          trap 'echo "::error title=コミットしてプッシュ（失敗時も実行結果を残す）::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
           git add activity img/activity index.html
           if git diff --cached --quiet; then
             echo "変更なし"
           else
             NEW=$(python -c "import json;print(json.load(open('activity/last-run.json')).get('new_posts',0))")
             git commit -m "活動報告: X の投稿を取得（新規 ${NEW} 件）"
-            git push origin activity-draft
+            git push origin activity-draft 2> push.err || { echo "::error title=プッシュ::$(tr '\n' ' ' < push.err)"; exit 1; }
           fi
 
       - name: プルリクエストを作成（未作成のときだけ）
@@ -78,6 +81,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          trap 'echo "::error title=プルリクエストを作成（未作成のときだけ）::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
           if git ls-remote --exit-code --heads origin activity-draft >/dev/null && \
              [ -z "$(gh pr list --head activity-draft --state open --json number --jq '.[0].number')" ] && \
              [ -n "$(git log origin/main..origin/activity-draft --oneline)" ]; then
