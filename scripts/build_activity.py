@@ -127,7 +127,8 @@ PAGE = """<!DOCTYPE html>
     .media img {{ display: block; width: 100%; height: 100%; object-fit: cover; max-height: 520px; }}
     .media.n2 img, .media.n3 img, .media.n4 img {{ aspect-ratio: 4 / 3; }}
     .media .video::after {{ content: "▶"; position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(31,99,176,.8); color: #fff; font-size: 1.3rem; }}
-    .src {{ display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: .85rem; font-weight: 700; text-decoration: none; }}
+    .links {{ display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 14px; }}
+    .src {{ display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 700; text-decoration: none; }}
     .empty {{ text-align: center; color: var(--muted); background: #fff; border-radius: 26px; padding: 40px 20px; }}
     footer {{ text-align: center; font-size: .8rem; color: var(--muted); padding: 0 16px 30px; letter-spacing: .06em; }}
   </style>
@@ -158,7 +159,7 @@ ARTICLE = """    <article id="p{id}">
       <h2>{title}</h2>
       <p class="body">{body}</p>
       {media}
-      <a class="src" href="{url}" target="_blank" rel="noopener">𝕏 元の投稿を見る →</a>
+      <div class="links"><a class="src" href="{url}" target="_blank" rel="noopener">𝕏 元の投稿を見る →</a>{quoted}</div>
     </article>"""
 
 CARD = """          <a class="act-card" href="activity/#p{id}">
@@ -171,6 +172,7 @@ def build() -> None:
     items = "\n".join(ARTICLE.format(
         id=p["id"], iso=p["created_at"], date=jdate(p["created_at"]), title=html.escape(title_of(p)),
         body=rich(p.get("text", "")), media=media_html(p, "../"), url=html.escape(p["url"]),
+        quoted=(f'<a class="src" href="{html.escape(p["quoted_url"])}" target="_blank" rel="noopener">引用元の投稿を見る →</a>' if p.get("quoted_url") else ""),
     ) for p in posts) or '    <p class="empty">活動報告は準備中です。</p>'
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(PAGE.format(band=band_css(), items=items), encoding="utf-8")
