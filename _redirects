@@ -1,11 +1,16 @@
 # ==============================================================
 #  工事中モードの切り替え（Cloudflare Pages）
 #
-#  ・工事中にする   … 下の「/  /maintenance/  200」の行を有効にする
-#  ・本番を公開する … その行の先頭に「#」を付けて無効にする
+#  MAINTENANCE-START 〜 MAINTENANCE-END の行が工事中ルールです。
+#  ・工事中にする   … ブロック内の行の先頭の「#」を外す
+#  ・本番を公開する … ブロック内の行の先頭に「#」を付ける
 #
-#  scripts/site-mode.sh on / off でも切り替えられます。
+#  sh scripts/site-mode.sh on / off / status でも切り替えられます。
 #  変更を main にプッシュすると、Cloudflare が自動で反映します。
 # ==============================================================
 
-/  /maintenance/  200
+# MAINTENANCE-START
+/           /maintenance/  200
+/activity   /maintenance/  200
+/activity/  /maintenance/  200
+# MAINTENANCE-END

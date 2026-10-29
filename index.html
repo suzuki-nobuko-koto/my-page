@@ -311,6 +311,17 @@
       font-weight: 700; font-size: .9rem; padding: 6px 16px; border-radius: 999px;
     }
 
+    /* ===== 最新の活動報告（scripts/build_activity.py が中身を差し込む） ===== */
+    .act-latest { background: var(--white); border-radius: 30px; padding: 26px 24px; margin: 0 0 32px; box-shadow: 0 12px 30px rgba(43,127,212,.12); }
+    .act-latest h3 { margin: 0 0 12px; font-size: 1.2rem; font-weight: 900; color: var(--blue-deep); }
+    .act-card { display: flex; gap: 14px; align-items: center; padding: 10px 0; border-top: 1px dashed #d6e9f8; text-decoration: none; color: var(--text); }
+    .act-card img, .act-noimg { flex: none; width: 96px; height: 72px; object-fit: cover; border-radius: 14px; background: var(--ice); }
+    .act-meta { display: flex; flex-direction: column; line-height: 1.6; }
+    .act-meta time { font-size: .8rem; font-weight: 700; color: var(--blue); }
+    .act-meta b { font-weight: 700; }
+    .act-card:hover b { color: var(--blue-deep); text-decoration: underline; }
+    .act-more { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--pink-deep); text-decoration: none; }
+
     /* ===== 未記入の目印（公開前に消す） ===== */
     .todo { background: #fff3a6; color: #6b5500; border-radius: 6px; padding: 0 6px; font-weight: 700; }
 
@@ -484,6 +495,7 @@
           <img src="img/activity-street.jpg" alt="江東区内で日本保守党ののぼりを立て、仲間と街頭活動をする様子" width="1400" height="1050">
           <figcaption>江東区内での街頭活動</figcaption>
         </figure>
+        <!-- ACTIVITY:START --><!-- ACTIVITY:END -->
         <div class="action-list">
           <div class="action-item reveal">
             <span class="tag">街頭活動</span>

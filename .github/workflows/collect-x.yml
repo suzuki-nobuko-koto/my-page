@@ -1,0 +1,87 @@
+# 鈴木のぶこ（@petit_tama3）の X 投稿を集めて、活動報告の下書きを作る
+#
+# - 毎週月曜 6:00（日本時間）に自動実行。Actions 画面の「Run workflow」で手動実行も可
+# - 結果は activity-draft ブランチにコミットし、main 向けのプルリクエストを作る
+# - 掲載するかどうかは activity/posts/*.json の status で決める（pending / published / hidden）
+# - main にマージすると Cloudflare が自動で公開する
+name: collect-x
+
+on:
+  schedule:
+    - cron: "0 21 * * 0"        # UTC 日曜 21:00 = 日本時間 月曜 6:00
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:                       # 収集の仕組みを変えたときは動作確認として1回実行する
+      - scripts/fetch_x.py
+      - .github/workflows/collect-x.yml
+
+concurrency:
+  group: collect-x
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: activity-draft ブランチを用意
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin activity-draft >/dev/null; then
+            git checkout -B activity-draft origin/activity-draft
+            git merge --no-edit origin/main || { git merge --abort; git checkout -B activity-draft origin/main; }
+          else
+            git checkout -B activity-draft origin/main
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 依存ライブラリ
+        run: pip install --quiet pillow
+
+      - name: X から投稿を取得
+        id: fetch
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: python scripts/fetch_x.py
+
+      - name: 活動報告ページを生成
+        if: always()
+        run: python scripts/build_activity.py
+
+      - name: コミットしてプッシュ（失敗時も実行結果を残す）
+        if: always()
+        run: |
+          git add activity img/activity index.html
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            NEW=$(python -c "import json;print(json.load(open('activity/last-run.json')).get('new_posts',0))")
+            git commit -m "活動報告: X の投稿を取得（新規 ${NEW} 件）"
+            git push origin activity-draft
+          fi
+
+      - name: プルリクエストを作成（未作成のときだけ）
+        if: always()
+        continue-on-error: true      # リポジトリ設定で Actions の PR 作成が許可されていない場合も止めない
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git ls-remote --exit-code --heads origin activity-draft >/dev/null && \
+             [ -z "$(gh pr list --head activity-draft --state open --json number --jq '.[0].number')" ] && \
+             [ -n "$(git log origin/main..origin/activity-draft --oneline)" ]; then
+            gh pr create --base main --head activity-draft \
+              --title "活動報告の下書き（X の新しい投稿）" \
+              --body "X から取得した投稿の下書きです。activity/posts/*.json の status を published にした投稿だけが掲載されます。確認してマージすると公開されます。"
+          fi
