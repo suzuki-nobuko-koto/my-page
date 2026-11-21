@@ -1,19 +1,23 @@
-# 鈴木のぶこ（@petit_tama3）の X 投稿を集めて、活動報告の下書きを作る
+# 鈴木のぶこ（@petit_tama3）の X 投稿を集めて、活動報告の下書きを作り、Threads・Instagram に転載する
 #
-# - 毎週月曜 6:00（日本時間）に自動実行。Actions 画面の「Run workflow」で手動実行も可
+# - 3時間おきに自動実行。Actions 画面の「Run workflow」で手動実行も可
+#   （新しい投稿が無い回は、X API の取得件数が0件なのでほぼ費用はかからない）
 # - 結果は activity-draft ブランチにコミットし、main 向けのプルリクエストを作る
 # - 掲載するかどうかは activity/posts/*.json の status で決める（pending / published / hidden）
 # - main にマージすると Cloudflare が自動で公開する
+# - 新しい投稿は Threads・Instagram に自動で転載する（scripts/crosspost.py、手順は docs/crosspost-setup.md）
+#   転載用の画像と転載済みの記録は sns-media ブランチに置く。トークンが未登録の SNS は飛ばす
 name: collect-x
 
 on:
   schedule:
-    - cron: "0 21 * * 0"        # UTC 日曜 21:00 = 日本時間 月曜 6:00
+    - cron: "17 */3 * * *"      # 3時間おき（毎時17分。0分は混み合うため）
   workflow_dispatch:
   push:
     branches: [main]
     paths:                       # 収集の仕組みを変えたときは動作確認として1回実行する
       - scripts/fetch_x.py
+      - scripts/crosspost.py
       - .github/workflows/collect-x.yml
 
 concurrency:
@@ -49,7 +53,7 @@ jobs:
           python-version: "3.12"
 
       - name: 依存ライブラリ
-        run: pip install --quiet pillow
+        run: pip install --quiet pillow fonttools
 
       - name: X から投稿を取得
         id: fetch
@@ -68,6 +72,11 @@ jobs:
           trap 'echo "::error title=コミットしてプッシュ（失敗時も実行結果を残す）::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
           git add activity index.html
           if [ -d img/activity ]; then git add img/activity; fi
+          # 新しい投稿が無く、正常に終わった回は「実行結果」だけの更新になるのでコミットしない
+          if [ "$(git diff --cached --name-only)" = "activity/last-run.json" ] && \
+             python -c "import json,sys;r=json.load(open('activity/last-run.json'));sys.exit(0 if r.get('status')=='ok' and not r.get('new_posts') else 1)"; then
+            git reset -q activity/last-run.json
+          fi
           if git diff --cached --quiet; then
             echo "変更なし"
           else
@@ -89,4 +98,58 @@ jobs:
             gh pr create --base main --head activity-draft \
               --title "活動報告の下書き（X の新しい投稿）" \
               --body "X から取得した投稿の下書きです。activity/posts/*.json の status を published にした投稿だけが掲載されます。確認してマージすると公開されます。"
+          fi
+
+      - name: Threads・Instagram に転載
+        if: steps.fetch.outcome == 'success'
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          CARD_FONT_DIR: ${{ runner.temp }}/fonts
+        run: |
+          trap 'echo "::error title=Threads・Instagram に転載::失敗したコマンド（$LINENO 行目）: $BASH_COMMAND"' ERR
+          if [ -z "$THREADS_ACCESS_TOKEN$INSTAGRAM_ACCESS_TOKEN" ]; then
+            echo "トークンが未登録なので転載しません（docs/crosspost-setup.md）"; exit 0
+          fi
+          WS="$GITHUB_WORKSPACE"; MEDIA="$RUNNER_TEMP/sns-media"
+
+          # 文章カード用のフォント（サイトと同じ Zen Maru Gothic）
+          mkdir -p "$CARD_FONT_DIR"
+          for w in Medium Bold; do
+            curl -sSfL -o "$CARD_FONT_DIR/ZenMaruGothic-$w.ttf" \
+              "https://raw.githubusercontent.com/google/fonts/main/ofl/zenmarugothic/ZenMaruGothic-$w.ttf"
+          done
+
+          # 転載用の画像と記録を置く sns-media ブランチ（無ければ空のブランチを作る）
+          if git ls-remote --exit-code --heads origin sns-media >/dev/null; then
+            git fetch -q origin sns-media
+            git worktree add -q -B sns-media "$MEDIA" origin/sns-media
+          else
+            git worktree add -q --detach "$MEDIA"
+            git -C "$MEDIA" checkout -q --orphan sns-media
+            git -C "$MEDIA" rm -rfq .
+          fi
+
+          python "$WS/scripts/crosspost.py" prepare --media-dir "$MEDIA"
+          cd "$MEDIA"
+          git add -A
+          git diff --cached --quiet || git commit -qm "SNS転載: 画像を用意"
+          git push -q origin sns-media
+          if [ "$(python -c "import json;print(len(json.load(open('queue.json'))))")" = "0" ]; then
+            echo "転載する新しい投稿はありません"; exit 0
+          fi
+
+          # 画像は GitHub の公開URL（コミットのハッシュ付きで固定）から Meta が取得する
+          SHA=$(git rev-parse HEAD)
+          set +e
+          python "$WS/scripts/crosspost.py" publish --media-dir "$MEDIA" \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/$SHA"
+          RC=$?
+          set -e
+          git add -A
+          git diff --cached --quiet || git commit -qm "SNS転載: 結果を記録"
+          git push -q origin sns-media
+          if [ $RC -ne 0 ]; then
+            echo "::error title=Threads・Instagram に転載::一部の転載に失敗しました。sns-media ブランチの state.json の error を確認してください（3回まで自動で再試行します）"
+            exit 1
           fi

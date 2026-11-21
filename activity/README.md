@@ -2,7 +2,7 @@
 
 ## 仕組み
 
-1. **収集**：GitHub Actions（`.github/workflows/collect-x.yml`）が毎週月曜 6:00 に
+1. **収集**：GitHub Actions（`.github/workflows/collect-x.yml`）が3時間おきに
    `scripts/fetch_x.py` を実行し、@petit_tama3 の新しい投稿を取得します。
    結果は `activity-draft` ブランチにコミットされ、main 向けのプルリクエストができます。
 2. **選定**：各投稿の `status` を決め、必要ならタイトルを付けます（Claude が下書きします）。
@@ -10,6 +10,9 @@
 4. **公開**：プルリクエストを確認して main にマージすると、Cloudflare が自動で公開します。
 
 工事中モードの間は、`/activity/` も工事中ページになります（`_redirects`）。
+
+同じワークフローで、新しい投稿を Threads・Instagram にも自動で転載します（サイトの `status` とは無関係）。
+準備の手順とルールは [`docs/crosspost-setup.md`](../docs/crosspost-setup.md) を見てください。
 
 ## ファイル
 
