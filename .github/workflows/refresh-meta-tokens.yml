@@ -1,0 +1,49 @@
+# Threads・Instagram のアクセストークンを延長して、GitHub の Secrets を新しいトークンに差し替える
+#
+# - どちらのトークンも有効期限は60日。毎週延長するので、期限切れで転載が止まることはない
+#   （延長できるのは発行から24時間以上たったトークンだけ。登録した当日の実行は失敗してよい）
+# - Secrets を書き換えるため、GH_SECRETS_TOKEN（このリポジトリの Secrets を読み書きできる
+#   fine-grained personal access token）が必要。手順は docs/crosspost-setup.md
+name: refresh-meta-tokens
+
+on:
+  schedule:
+    - cron: "43 0 * * 3"        # UTC 水曜 0:43 = 日本時間 水曜 9:43
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: トークンを延長
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_SECRETS_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error title=トークンを延長::GH_SECRETS_TOKEN が未登録です（docs/crosspost-setup.md の手順4）"; exit 1
+          fi
+          failed=0
+          refresh () {   # $1=Secret名 $2=現在のトークン $3=延長用URL
+            local name="$1" token="$2" url="$3"
+            if [ -z "$token" ]; then echo "$name: 未登録なので飛ばします"; return; fi
+            local res new days
+            res=$(curl -sS --get "$url" --data-urlencode "access_token=$token")
+            new=$(echo "$res" | jq -r '.access_token // empty')
+            if [ -z "$new" ]; then
+              echo "::error title=$name の延長に失敗::$(echo "$res" | jq -c '.error // .' | head -c 400)"
+              failed=1; return
+            fi
+            echo "::add-mask::$new"
+            gh secret set "$name" --repo "$REPO" --body "$new"
+            days=$(( $(echo "$res" | jq -r '.expires_in // 0') / 86400 ))
+            echo "$name: 延長しました（残り約 ${days} 日）"
+          }
+          refresh THREADS_ACCESS_TOKEN   "$THREADS_ACCESS_TOKEN"   "https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token"
+          refresh INSTAGRAM_ACCESS_TOKEN "$INSTAGRAM_ACCESS_TOKEN" "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token"
+          exit $failed
